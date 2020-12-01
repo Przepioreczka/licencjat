@@ -1,11 +1,5 @@
-*.fdt
-*.set
+data
+data2
 *.npy
-Czytanie.ipynb
-DE_DBN.ipynb
-Preprocessing.ipynb
-Uczenie.ipynb
-V2.ipynb
-bachelor_thesis_data_categorization.ipynb
 events.txt
 .ipynb_checkpoints/
