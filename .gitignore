@@ -2,4 +2,5 @@ data
 data2
 *.npy
 events.txt
-.ipynb_checkpoints/
+.ipynb_checkpoints
+__pychache__/
