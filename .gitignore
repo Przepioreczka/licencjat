@@ -3,4 +3,6 @@ data2
 *.npy
 events.txt
 .ipynb_checkpoints
-__pychache__/
+__pycache__
+models
+

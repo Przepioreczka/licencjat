@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from typing import Iterable, Union
-
+import pickle
 
 def fit(model, X_train: Iterable, y_train: Iterable, 
                       X_test: Iterable, y_test: Iterable,
