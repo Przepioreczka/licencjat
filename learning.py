@@ -25,16 +25,22 @@ def evaluate(model, X_val: Iterable, y_val: Iterable, verbose = 1):
     return score
 
 def plot_history(history, loss_fun: str):
-    # Plot history: Categorical crossentropy & Accuracy
-    plt.figure(figsize=(12,8))
-    plt.plot(history.history['loss'], label=loss_fun + '(training data)')
-    plt.plot(history.history['val_loss'], label=loss_fun + '(validation data)')
-    plt.plot(history.history['acc'], label='Accuracy (training data)')
-    plt.plot(history.history['val_acc'], label='Accuracy (validation data)')
+    fig = plt.figure(figsize=(12,8))
+    ax = fig.add_subplot(111)
+    
+    ax.plot(history.history['loss'], label=loss_fun + '(training data)', c = 'red')
+    ax.plot(history.history['val_loss'], label=loss_fun + '(validation data)', c = 'orange')
+    ax2 = ax.twinx()
+    ax2.plot(history.history['acc'], label='Accuracy (training data)', c = 'green')
+    ax2.plot(history.history['val_acc'], label='Accuracy (validation data)', c = 'blue')
     plt.title('Model performance')
-    plt.ylabel('Loss value')
-    plt.xlabel('No. epoch')
-    plt.legend(loc="upper left")
+    ax.set_ylabel('Loss value')
+    ax2.set_ylabel('Accuracy value')
+    ax.set_xlabel('No. epoch')
+    ax.legend(loc="upper left")
+    ax2.legend(loc = 'upper right')
+    ax.set_ylim(0.5, 0.72)
+    ax2.set_ylim(0.5, 0.72)
     plt.show()
     
 def create_model_LSTM(sample_shape: Iterable,
