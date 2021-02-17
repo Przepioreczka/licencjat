@@ -38,7 +38,7 @@ def plot_history(history, loss_fun: str):
     ax2.set_ylabel('Accuracy value')
     ax.set_xlabel('No. epoch')
     ax.legend(loc="upper left")
-    ax2.legend(loc = 'upper right')
+    ax2.legend(loc = 'lower right')
     ax.set_ylim(0.5, 0.72)
     ax2.set_ylim(0.5, 0.72)
     plt.show()
