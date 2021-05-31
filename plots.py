@@ -35,6 +35,8 @@ def plot_mean_welch(epochs, fs, names, xlim = None, ylim = None):
             plt.xlim(xlim)
         if ylim:
             plt.ylim(ylim)
+        plt.xlabel("Frequency [Hz]")
+        plt.ylabel("PSD")
     plt.tight_layout()
     plt.show()
     
