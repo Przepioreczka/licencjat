@@ -5,4 +5,5 @@ events.txt
 .ipynb_checkpoints
 __pycache__
 models
-
+*.pkl
+*.json
