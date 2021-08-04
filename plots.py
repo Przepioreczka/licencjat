@@ -70,7 +70,7 @@ def plot_compare_features(features1: Iterable, features2: Iterable, filt: int, y
             curv22 = feature_maps2[:, i, x] - feature_std2[:, i, x]
             plt.fill_between(np.arange(0, feature_maps1.shape[0]), curv11, curv21, alpha = 0.2, color = 'r')
             plt.fill_between(np.arange(0, feature_maps2.shape[0]), curv12, curv22, alpha = 0.2, color = 'black')
-            plt.plot(feature_maps1[:, i, x], color = 'r')
-            plt.plot(feature_maps2[:, i, x], color = 'black')
+            plt.plot(np.linspace(-8/64,58/64, 66), feature_maps1[:, i, x], color = 'r')
+            plt.plot(np.linspace(-8/64,58/64, 66), feature_maps2[:, i, x], color = 'black')
             plt.ylim(ylim[0], ylim[1])
         plt.show()
