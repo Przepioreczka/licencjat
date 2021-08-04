@@ -95,3 +95,28 @@ def preprocess(filename: str, fmin: Union[float, int], fmax: Union[float, int],
     epo_final = mne.filter.resample(epochs, up = 1, down = 4)
 
     return down_fs//4, epo_final, channels, word_type
+
+
+def read_and_get_bad_channels(filename, fmin, fmax, method, notch: False):
+    mne.set_log_level(verbose = 'CRITICAL')
+    '''Reading file'''
+    file = mne.io.read_raw_eeglab(filename ,preload = True)
+    
+    '''Setting reference'''
+    file.set_eeg_reference(ref_channels = ['A1','A2']) 
+    
+    '''Dropping unncessary channels'''
+    file.drop_channels(['EOG','dioda','TSS','A1','A2'])
+    
+    '''Params'''
+    Fs = int(file.info['sfreq'])
+    channels = file.info['ch_names']
+    
+    '''First filtering'''
+    file.filter(fmin, fmax, method = method, iir_params = dict(order=5, ftype='butter'))
+    if notch:
+        file.notch_filter(np.arange(50, 251, 50),method='fir')
+
+    '''Finding and interpolating bad channels'''
+    ch_ind, ch_names = get_bad_channels(file.get_data(), channels)
+    return ch_ind, ch_names
